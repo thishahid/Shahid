@@ -62,19 +62,19 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "shahid@example.com",
-      link: "mailto:shahid@example.com"
+      value: "shiekhshahidkhan@gmail.com",
+      link: "mailto:shiekhshahidkhan@gmail.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      value: "+91 6267300764",
+      link: "tel:+916267300764"
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "San Francisco, CA",
+      title: "Indore",
+      value: "Madhya Pradesh, India",
       link: null
     },
     {
@@ -89,13 +89,13 @@ export default function Contact() {
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com",
+      url: "https://github.com/thishahid/",
       color: "hover:bg-gray-900 hover:text-white"
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/shahid-khan-2400b9292",
       color: "hover:bg-blue-600 hover:text-white"
     },
     {

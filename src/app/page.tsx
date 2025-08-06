@@ -102,7 +102,7 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild className="hover-scale">
-                  <a href="mailto:shahid@example.com">
+                  <a href="mailto:shiekhshahidkhan+website@gmail.com">
                     <Mail className="h-5 w-5" />
                   </a>
                 </Button>
