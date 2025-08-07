@@ -37,7 +37,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shahid | UI/UX Designer & Data Analyst",
     description: "Personal portfolio showcasing UI/UX design and data analysis projects",
-    url: "https://shahid-portfolio.vercel.app",
     siteName: "Shahid's Portfolio",
     type: "website",
   },
