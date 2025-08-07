@@ -80,7 +80,7 @@ export default function Contact() {
     {
       icon: Clock,
       title: "Availability",
-      value: "Mon - Fri: 9AM - 6PM PST",
+      value: "Mon - Fri: 9AM - 6PM (UTC+05:30)",
       link: null
     }
   ];
