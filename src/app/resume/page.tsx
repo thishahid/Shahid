@@ -47,7 +47,7 @@ const experience = [
   {
     title: "UI/UX Designer & Data Analyst",
     company: "Freelance",
-    period: "2023 - Present",
+    period: "2025 - Present",
     description: "Providing comprehensive design and data analysis services to clients across various industries.",
     achievements: [
       "Designed user interfaces for 15+ mobile and web applications",
@@ -59,7 +59,7 @@ const experience = [
   {
     title: "Design Intern",
     company: "Tech Startup",
-    period: "2022 - 2023",
+    period: "2024 - 2025",
     description: "Gained hands-on experience in user-centered design and product development.",
     achievements: [
       "Assisted in redesigning the company's main product interface",
