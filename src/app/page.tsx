@@ -113,8 +113,12 @@ export default function Home() {
             <div className="flex justify-center animate-fadeInRight">
               <div className="relative animate-float">
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-400 to-green-400 p-1">
-                  <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                    <div className="text-8xl">👨‍💻</div>
+                  <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+                    <img 
+                      src="/profile.jpg" 
+                      alt="Shahid - UI/UX Designer & Data Analyst" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 {/* Decorative elements */}

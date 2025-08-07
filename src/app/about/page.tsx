@@ -8,30 +8,31 @@ import { useEffect } from "react";
 
 const timeline = [
   {
-    year: "2024",
+    year: "2025",
     title: "UI/UX Designer & Data Analyst",
     company: "Freelance",
     description: "Started freelance career focusing on user-centered design and data visualization projects.",
     type: "work"
   },
   {
-    year: "2023",
-    title: "Self-taught Journey",
-    company: "Personal Development",
-    description: "Began intensive self-learning in UI/UX design and data analysis through online courses and personal projects.",
+    year: "2026 Expected",
+    title: "Degree Completion",
+    company: "Jahawarlal Nehru Institute of Technology",
+    description: "BTech in Computer Science, equipping me with strong technical skills foundation.",
     type: "education"
   },
   {
-    year: "2022",
-    title: "Design Intern",
-    company: "Tech Startup",
-    description: "Gained hands-on experience in user research, prototyping, and design systems.",
-    type: "work"
+    year: "2024",
+    title: "Machine Learning Intern",
+    company: "Acmegrade pvt ltd",
+    description: "Gained familiarity with Python and machine learning libraries through internship experience.",
+    type: "internship"
   },
+  
   {
-    year: "2021",
-    title: "Computer Science Fundamentals",
-    company: "Online Learning",
+    year: "2022",
+    title: "High School Completion",
+    company: "MP Board",
     description: "Started learning programming and computer science fundamentals.",
     type: "education"
   }
@@ -112,7 +113,7 @@ export default function About() {
               <div className="flex items-center gap-6 text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <MapPin className="h-5 w-5" />
-                  <span>San Francisco, CA</span>
+                  <span>Indore, MP</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Coffee className="h-5 w-5" />

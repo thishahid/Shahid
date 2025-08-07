@@ -74,13 +74,13 @@ const education = [
   {
     degree: "Self-taught UI/UX Design",
     institution: "Online Learning Platforms",
-    period: "2021 - 2023",
+    period: "2023 - 2024",
     description: "Completed comprehensive courses in UI/UX design, user research, and design thinking."
   },
   {
     degree: "Data Science Fundamentals",
     institution: "Online Learning Platforms",
-    period: "2022 - 2023",
+    period: "2024 - 2025",
     description: "Studied data analysis, visualization, and machine learning fundamentals."
   }
 ];
@@ -89,28 +89,28 @@ const certifications = [
   {
     name: "Google UX Design Certificate",
     issuer: "Google",
-    date: "2023",
+    date: "2025",
     image: "🏆",
     link: "https://coursera.org"
   },
   {
     name: "Data Analyst Professional Certificate",
     issuer: "IBM",
-    date: "2023",
+    date: "2025",
     image: "📊",
     link: "https://coursera.org"
   },
   {
     name: "Figma Certified Professional",
     issuer: "Figma",
-    date: "2023",
+    date: "2025",
     image: "🎨",
     link: "https://figma.com"
   },
   {
     name: "Python for Data Science",
     issuer: "DataCamp",
-    date: "2022",
+    date: "2025",
     image: "🐍",
     link: "https://datacamp.com"
   }
@@ -149,7 +149,7 @@ export default function Resume() {
               <CardContent className="p-6">
                 <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold mb-1">Email</h3>
-                <p className="text-sm text-muted-foreground">shahid@example.com</p>
+                <p className="text-sm text-muted-foreground">shiekhshahidkhan@gmail.com</p>
               </CardContent>
             </Card>
             
@@ -157,7 +157,7 @@ export default function Resume() {
               <CardContent className="p-6">
                 <Phone className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold mb-1">Phone</h3>
-                <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                <p className="text-sm text-muted-foreground">+91 6267300764</p>
               </CardContent>
             </Card>
             
@@ -165,7 +165,7 @@ export default function Resume() {
               <CardContent className="p-6">
                 <MapPin className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold mb-1">Location</h3>
-                <p className="text-sm text-muted-foreground">San Francisco, CA</p>
+                <p className="text-sm text-muted-foreground">Indore, MP</p>
               </CardContent>
             </Card>
             
@@ -173,7 +173,7 @@ export default function Resume() {
               <CardContent className="p-6">
                 <Calendar className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-semibold mb-1">Experience</h3>
-                <p className="text-sm text-muted-foreground">3+ Years</p>
+                <p className="text-sm text-muted-foreground">Fresher</p>
               </CardContent>
             </Card>
           </div>
