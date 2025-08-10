@@ -67,12 +67,12 @@ const projects = [
     solution: "Applied clustering algorithms and created visualizations to identify distinct customer segments.",
     result: "Marketing campaigns became 30% more targeted and effective.",
     image: "🎯",
-    tools: ["Python", "Scikit-learn", "Pandas", "Tableau"],
+    tools: ["React", "TypeScript", "Vite", "Rechart"],
     links: {
-      github: "https://github.com",
-      live: "https://tableau.com"
+      github: "https://github.com/thishahid/CustomerSegmentationAnalysis.git",
+      live: "https://customer-segmentation-analysis.vercel.app"
     },
-    date: "December 2023"
+    date: "August 2025"
   },
   {
     id: 5,
