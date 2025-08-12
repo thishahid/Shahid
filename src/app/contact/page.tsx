@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
 import { 
   Mail, 
   Phone, 
@@ -28,35 +29,128 @@ export default function Contact() {
     subject: "",
     message: ""
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form
-    setFormData({
+  const validateForm = () => {
+    const newErrors = {
       name: "",
       email: "",
       subject: "",
       message: ""
-    });
-    setIsSubmitting(false);
-    
-    // Show success message (you can use a toast here)
-    alert("Message sent successfully! I'll get back to you soon.");
+    };
+    let isValid = true;
+
+    // Validate name
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+      isValid = false;
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+      isValid = false;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+      isValid = false;
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    // Validate subject
+    if (!formData.subject.trim()) {
+      newErrors.subject = "Subject is required";
+      isValid = false;
+    } else if (formData.subject.trim().length < 3) {
+      newErrors.subject = "Subject must be at least 3 characters";
+      isValid = false;
+    }
+
+    // Validate message
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+      isValid = false;
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name: fieldName, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [fieldName]: value
+    }));
+
+
+  // Clear error when user starts typing
+    if (fieldName in errors) {
+      setErrors(prev => ({
+        ...prev,
+        [fieldName]: ""
+      }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!validateForm()) return;
+
+  setIsSubmitting(true);
+
+  try {
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      // ✅ Show nice toast instead of alert
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+
+      // ✅ Reset form and state
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setErrors({ name: "", email: "", subject: "", message: "" }); // Clear errors
+    } else {
+      // ❌ Show error toast
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: result.error || "Please try again.",
+      });
+    }
+  } catch (error: any) {
+    // 🛑 Handle network or unexpected errors
+    toast({
+      variant: "destructive",
+      title: "Network error",
+      description: "Could not send message. Please check your connection.",
+    });
+  } finally {
+    // ✅ Always stop loading state
+    setIsSubmitting(false);
+  }
+};
 
   const contactInfo = [
     {
@@ -177,7 +271,11 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your name"
+                        className={errors.name ? "border-red-500 focus:border-red-500" : ""}
                       />
+                      {errors.name && (
+                        <p className="text-sm text-red-500 mt-1">{errors.name}</p>
+                      )}
                     </div>
                     <div>
                       <Label htmlFor="email">Email *</Label>
@@ -189,7 +287,11 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
+                        className={errors.email ? "border-red-500 focus:border-red-500" : ""}
                       />
+                      {errors.email && (
+                        <p className="text-sm text-red-500 mt-1">{errors.email}</p>
+                      )}
                     </div>
                   </div>
                   
@@ -203,7 +305,11 @@ export default function Contact() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="What's this about?"
+                      className={errors.subject ? "border-red-500 focus:border-red-500" : ""}
                     />
+                    {errors.subject && (
+                      <p className="text-sm text-red-500 mt-1">{errors.subject}</p>
+                    )}
                   </div>
                   
                   <div>
@@ -216,7 +322,11 @@ export default function Contact() {
                       onChange={handleInputChange}
                       placeholder="Tell me about your project, ideas, or just say hello!"
                       rows={6}
+                      className={errors.message ? "border-red-500 focus:border-red-500" : ""}
                     />
+                    {errors.message && (
+                      <p className="text-sm text-red-500 mt-1">{errors.message}</p>
+                    )}
                   </div>
                   
                   <Button 
