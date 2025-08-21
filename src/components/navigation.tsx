@@ -45,32 +45,55 @@ export default function Navigation() {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Navigation */}
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="text-lg font-medium transition-colors hover:text-primary py-2"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
+{/* Mobile Navigation */}
+<div className="flex items-center gap-2 md:hidden">
+  <ThemeToggle />
+  <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <SheetTrigger asChild>
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-105 transition-transform"
+        aria-label="Open menu"
+      >
+        <Menu className="h-6 w-6" />
+      </Button>
+    </SheetTrigger>
+    <SheetContent
+      side="right"
+      className="w-[300px] sm:w-[400px] bg-background/95 backdrop-blur-xl p-0 overflow-hidden"
+    >
+      {/* Logo */}
+      <div className="px-8 pt-16 pb-8">
+        <Link
+          href="/"
+          className="flex items-center space-x-3 font-bold text-xl"
+          onClick={() => setIsOpen(false)}
+        >
+          <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground">S</span>
           </div>
+          <span>Shahid</span>
+        </Link>
+      </div>
+
+      {/* Links */}
+      <div className="px-8 pb-10 flex flex-col space-y-2">
+        {navigation.map((item, index) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="text-lg font-medium py-2 px-2 hover:text-primary transition-colors"
+            onClick={() => setIsOpen(false)}
+          >
+            {item.name}
+          </Link>
+        ))}
+        <div className="my-4 h-px bg-border"></div>
+      </div>
+    </SheetContent>
+  </Sheet>
+</div>
         </div>
       </div>
     </nav>

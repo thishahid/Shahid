@@ -116,6 +116,14 @@ const certifications = [
   }
 ];
 
+const handleDownload = () => {
+  // Trigger download
+  const link = document.createElement("a");
+  link.href = "/resume.pdf";
+  link.download = "Shahid_Resume.pdf";
+  link.click();
+};
+
 export default function Resume() {
   return (
     <div className="min-h-screen bg-background">
@@ -132,8 +140,8 @@ export default function Resume() {
             </p>
             
             <div className="mt-8">
-              <Button size="lg" className="gap-2">
-                <Download className="h-5 w-5" />
+              <Button size="lg" className="gap-2" onClick={handleDownload}>                
+                <Download className="h-5 w-5" />                
                 Download PDF Resume
               </Button>
             </div>
