@@ -54,7 +54,7 @@ const projects = [
     tools: ["Figma", "Framer", "UserTesting"],
     links: {
       github: "https://github.com",
-      prototype: "https://figma.com"
+      prototype: "https://www.figma.com/design/aS28RwNZOOlOoozBB7lSwX/Banking-App?node-id=0-1&t=SCPnfHVwzcuZvxNE-1"
     },
     date: "January 2024"
   },
@@ -85,8 +85,8 @@ const projects = [
     image: "✅",
     tools: ["Figma", "Sketch", "InVision"],
     links: {
-      github: "https://github.com",
-      live: "https://example.com",
+      github: "https://github.com/thishahid/KanbanTaskManager",
+      live: "https://kanban-task-manager-sepia.vercel.app",
       prototype: "https://figma.com"
     },
     date: "November 2023"
