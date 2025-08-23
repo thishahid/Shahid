@@ -6,6 +6,11 @@ import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 
+// 1. Import the new Hyperspeed component and its presets
+import Hyperspeed from "@/components/ui/Hyperspeed";
+import { hyperspeedPresets } from "@/components/ui/hyperspeed-presets";
+
+
 const skills = [
   { name: "Figma", icon: "🎨" },
   { name: "Python", icon: "🐍" },
@@ -45,12 +50,16 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-white"> {/* Set text to white for better contrast */}
       <Navigation />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 animate-fadeInUp"></div>
+        
+        {/* 2. Replace the old background div with the Hyperspeed component */}
+        <div className="absolute inset-0 animate-fadeInUp">
+          <Hyperspeed effectOptions={hyperspeedPresets.two} />
+        </div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -62,7 +71,7 @@ export default function Home() {
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent animate-fadeInUp animate-stagger-2">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-600 to-blue-400 bg-clip-text text-transparent animate-fadeInUp animate-stagger-2">
                 Hi, I'm Shahid
               </h1>
               
@@ -92,12 +101,12 @@ export default function Home() {
               {/* Social Links */}
               <div className="flex gap-4 mt-8 justify-center lg:justify-start animate-fadeInUp animate-stagger-6">
                 <Button variant="ghost" size="icon" asChild className="hover-scale">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/thishahid" target="_blank" rel="noopener noreferrer">
                     <Github className="h-5 w-5" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" asChild className="hover-scale">
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/shahid-khan-2400b9292" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="h-5 w-5" />
                   </a>
                 </Button>
@@ -112,7 +121,7 @@ export default function Home() {
             {/* Right Content - Profile Image */}
             <div className="flex justify-center animate-fadeInRight">
               <div className="relative animate-float">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-blue-400 to-green-400 p-1">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-red-400 to-blue-600 p-1">
                   <div className="w-full h-full rounded-full bg-background flex items-center justify-center overflow-hidden">
                     <img 
                       src="/profile.jpg" 
@@ -122,7 +131,7 @@ export default function Home() {
                   </div>
                 </div>
                 {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full opacity-60 animate-pulse-slow"></div>
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-red-400 rounded-full opacity-60 animate-pulse-slow"></div>
                 <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-blue-400 rounded-full opacity-60 animate-rotate-slow"></div>
               </div>
             </div>
