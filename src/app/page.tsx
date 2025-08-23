@@ -50,7 +50,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-white"> {/* Set text to white for better contrast */}
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
       {/* Hero Section */}
