@@ -1,101 +1,59 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import CardNav, { type CardNavItem } from "@/components/ui/CardNav";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Blog", href: "/blog" },
-  { name: "Resume", href: "/resume" },
-  { name: "Contact", href: "/contact" },
+// 1. Define your logo as a reusable component
+const Logo = () => (
+  <Link href="/" className="flex items-center space-x-2">
+    <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+      <span className="text-primary-foreground font-bold text-sm">S</span>
+    </div>
+    <span className="font-bold text-xl hidden sm:inline-block">Shahid</span>
+  </Link>
+);
+
+// 2. Group your original navigation links into the card format
+const navigationItems: CardNavItem[] = [
+  {
+    label: "Explore",
+    bgColor: "#0D0716", // Feel free to change these colors
+    textColor: "#fff",
+    links: [
+      { label: "Home", href: "/", ariaLabel: "Go to Home page" },
+      { label: "About", href: "/about", ariaLabel: "Learn more about me" },
+    ],
+  },
+  {
+    label: "My Work",
+    bgColor: "#170D27",
+    textColor: "#fff",
+    links: [
+      { label: "Projects", href: "/projects", ariaLabel: "View my projects" },
+      { label: "Resume", href: "/resume", ariaLabel: "View my resume" },
+    ],
+  },
+  {
+    label: "Connect",
+    bgColor: "#271E37",
+    textColor: "#fff",
+    links: [
+      { label: "Blog", href: "/blog", ariaLabel: "Read my blog" },
+      { label: "Contact", href: "/contact", ariaLabel: "Get in touch with me" },
+    ],
+  },
 ];
 
+// 3. Export the new Navigation component
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">S</span>
-            </div>
-            <span className="font-bold text-xl">Shahid</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium transition-colors hover:text-primary nav-link"
-              >
-                {item.name}
-              </Link>
-            ))}
-            <ThemeToggle />
-          </div>
-
-{/* Mobile Navigation */}
-<div className="flex items-center gap-2 md:hidden">
-  <ThemeToggle />
-  <Sheet open={isOpen} onOpenChange={setIsOpen}>
-    <SheetTrigger asChild>
-      <Button
-        variant="ghost"
-        size="icon"
-        className="h-10 w-10 rounded-full hover:bg-primary/10 hover:scale-105 transition-transform"
-        aria-label="Open menu"
-      >
-        <Menu className="h-6 w-6" />
-      </Button>
-    </SheetTrigger>
-    <SheetContent
-      side="right"
-      className="w-[300px] sm:w-[400px] bg-background/95 backdrop-blur-xl p-0 overflow-hidden"
-    >
-      {/* Logo */}
-      <div className="px-8 pt-16 pb-8">
-        <Link
-          href="/"
-          className="flex items-center space-x-3 font-bold text-xl"
-          onClick={() => setIsOpen(false)}
-        >
-          <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground">S</span>
-          </div>
-          <span>Shahid</span>
-        </Link>
-      </div>
-
-      {/* Links */}
-      <div className="px-8 pb-10 flex flex-col space-y-2">
-        {navigation.map((item, index) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className="text-lg font-medium py-2 px-2 hover:text-primary transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            {item.name}
-          </Link>
-        ))}
-        <div className="my-4 h-px bg-border"></div>
-      </div>
-    </SheetContent>
-  </Sheet>
-</div>
-        </div>
-      </div>
-    </nav>
+    <header>
+      <CardNav
+        logo={<Logo />}
+        items={navigationItems}
+        ctaComponent={<ThemeToggle />}
+      />
+    </header>
   );
 }
